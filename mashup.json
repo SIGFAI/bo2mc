@@ -1,0 +1,156 @@
+{
+  "id": "sigf/bo2mc",
+  "version": "2026.10.5",
+  "name": "Minecraft Zombies",
+  "tagline": "Black Ops II Zombies every night, Minecraft every day: dig in, build walls and hold out against the rounds in an endless Minecraft world.",
+  "how_to_play": [
+    "One new game (IW4L): Black Ops II Zombies in an endless Minecraft world. Each night is a zombies round, each day you mine, build and craft.",
+    "Black Ops II's own menus open: ONLINE > SOLO, pick MINECRAFT on the globe (NUKETOWN plays the original map), then START MATCH.",
+    "Left click mines or shoots, right click places, 1-9 or the mouse wheel pick a hotbar slot, E opens the inventory, F opens and closes doors.",
+    "Zombies dig through any block to reach you. The spawn room holds the perks, the Mystery Box and Pack-a-Punch."
+  ],
+  "kind": "mashup",
+  "games": [
+    {
+      "game": "bo2",
+      "role": "host",
+      "label": "Call of Duty: Black Ops II",
+      "engine": "IW4L (Rust rewrite of the IW engine, bo2zm fork) reading Black Ops II's zone files in place",
+      "apps": {
+        "steam": "202970"
+      },
+      "runtime": "PC Steam install with Zombies (Nuketown Zombies map loaded), tested on the author's PC only",
+      "mode": "offline solo; never Black Ops II's online services"
+    },
+    {
+      "game": "minecraft",
+      "role": "guest",
+      "label": "Minecraft",
+      "mc": "26.3",
+      "uses": "client files downloaded from Mojang on first run (about 125 MB)"
+    }
+  ],
+  "requires": [
+    {
+      "id": "bo2-zombies",
+      "page": "https://store.steampowered.com/app/202970/",
+      "note": "Black Ops II on Steam with Zombies installed; the Minecraft map is built on Nuketown Zombies (DLC 219092 on Steam), so you likely need it too. IW4L only reads the files"
+    },
+    {
+      "id": "minecraft-java",
+      "page": "https://www.minecraft.net/en-us/store/minecraft-java-bedrock-edition-pc",
+      "note": "own Minecraft: Java Edition; the game downloads 26.3's files from Mojang itself on first run"
+    }
+  ],
+  "install": [
+    {
+      "game": "bo2",
+      "strategy": "game-dir-snapshot",
+      "files": [
+        {
+          "src": "MinecraftZombies-2026-10-05.zip",
+          "dst": "{game}",
+          "root": "MinecraftZombies",
+          "unpack": true,
+          "contents": [
+            {
+              "path": "MinecraftZombies/LICENSE.txt",
+              "sha256": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5"
+            },
+            {
+              "path": "MinecraftZombies/Play.bat",
+              "sha256": "91d024484aa3259b71ec4ebba47f97981ccc93e94c4ddb0ae09ebf437c7e603d"
+            },
+            {
+              "path": "MinecraftZombies/README.txt",
+              "sha256": "e261643d5216f1d6a770780c1f570a2d2b93ee414fc152fe553975bf9968243d"
+            },
+            {
+              "path": "MinecraftZombies/Setup.bat",
+              "sha256": "f4c122f873a014bac98b8db83d9efe282d8e1ad84091e56ecb104af4889d248a"
+            },
+            {
+              "path": "MinecraftZombies/Setup.ps1",
+              "sha256": "87d4383eaeaa1089a8cfcf512b051004fce0af80a4c80d37f5587a1ae3f22d02"
+            },
+            {
+              "path": "MinecraftZombies/iw4l.exe",
+              "sha256": "680a1ef255e1a057223cd05df7a9ff7dcd13effce24037671402e8d5b36cc7fe"
+            },
+            {
+              "path": "MinecraftZombies/loadscreen.png",
+              "sha256": "14b7db4b34b099c0051517b73086b5b754ccec7dc159a8aba6568b33cf78abee"
+            }
+          ],
+          "url": "https://github.com/DaffyDabz/bo2-minecraft-zombies/releases/download/v2026.10.05/MinecraftZombies-2026-10-05.zip",
+          "sha256": "3844ddadb0e9eecba2654553324c6ac89aa432aaf1b86b9e1808c5dff3ccf422",
+          "size": 46692320
+        }
+      ]
+    }
+  ],
+  "launch": [
+    {
+      "game": "bo2",
+      "exe": "iw4l.exe",
+      "args": [
+        "frontend",
+        "t6:zm_nuked"
+      ]
+    }
+  ],
+  "files": [
+    {
+      "name": "MinecraftZombies-2026-10-05.zip",
+      "url": "https://github.com/DaffyDabz/bo2-minecraft-zombies/releases/download/v2026.10.05/MinecraftZombies-2026-10-05.zip",
+      "sha256": "3844ddadb0e9eecba2654553324c6ac89aa432aaf1b86b9e1808c5dff3ccf422",
+      "size": 46692320
+    }
+  ],
+  "source": {
+    "repo": "https://github.com/DaffyDabz/bo2-minecraft-zombies",
+    "license": "Apache-2.0 (upstream download)",
+    "upstream_license": "Apache-2.0",
+    "fetch": "upstream",
+    "tag": "v2026.10.05",
+    "commit": "f4402fd9097fb2dc55c06790761f2b99271cac58",
+    "hosted": "https://github.com/SIGFAI/bo2mc",
+    "based_on": "https://github.com/chasmlol/2010-rust-rewrite-mashup",
+    "linked": [
+      {
+        "name": "IW4L",
+        "repo": "https://github.com/vladtrc/iw4L",
+        "license": "Apache-2.0"
+      },
+      {
+        "name": "skate crates (compiled in, off)",
+        "repo": "https://github.com/SK8-ENGINE/skate-3-rust-engine",
+        "license": "none (not redistributed by SIGF)"
+      },
+      {
+        "name": "MinecraftOSS worldgen crates",
+        "license": "not stated in the repo"
+      }
+    ]
+  },
+  "media": {},
+  "built_by": {
+    "author": "DaffyDabz",
+    "authors": [
+      "DaffyDabz",
+      "chasmlol",
+      "vladtrc and IW4L contributors"
+    ],
+    "packaged_by": "SIGF"
+  },
+  "idea_by": "DaffyDabz",
+  "built_at": "2026-10-07T00:00:00.000Z",
+  "status": "beta",
+  "issues": "https://github.com/DaffyDabz/bo2-minecraft-zombies/issues",
+  "notes": [
+    "You need Call of Duty: Black Ops II on Steam with Zombies installed; the Minecraft map is built on Nuketown Zombies, so you likely need that map too. Black Ops II never runs and its files are only read. Windows 64-bit with a DirectX 12 card.",
+    "The first start downloads Minecraft 26.3's files from Mojang (about 125 MB). Settings, logs and those files go into an iw4l-artifacts folder inside your Black Ops II folder; Restore removes the mod but leaves that folder, delete it by hand.",
+    "Offline solo only: it never connects to Black Ops II's online services, Steam or VAC.",
+    "Work in progress tested on the author's PC only: report bugs to the author with the Report a bug link."
+  ]
+}
